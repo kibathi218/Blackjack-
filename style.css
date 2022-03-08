@@ -1,7 +1,16 @@
-.container {
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+}
+
+.container,
+.game-table {
     background-color: rgb(0, 131, 0);
-    width: 1000px;
-    height: 1000px;
+    width: 100%;
+    height: 600px;
     text-align: center;
 }
 
@@ -9,13 +18,14 @@
     color: white;
     padding-top: 130px;
     font-size: 60px;
+    margin: 0;
 }
 
 .title-img {
     width: 250px;
 }
 
-button {
+.title-btn {
     width: 200px;
 }
 
@@ -25,6 +35,55 @@ button {
     padding-left: 270px;
 }
 
-.title-img-1 {
-    transform: rotateX(145deg)
+.row {
+    width: 500px;
+    height: 100px;
+    text-align: center;
+}
+
+.score-row {
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.dealers-hand {
+    background-color: rgb(255, 220, 133);
+}
+
+.dealers-cards {
+    background-color: rgb(255, 235, 185);
+}
+
+.players-hand {
+    background-color: rgb(255, 220, 133);
+}
+
+.players-cards {
+    background-color: rgb(255, 235, 185);
+}
+
+.game-table {
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-controls {
+    margin-top: 150px;
+}
+
+.game-controls button {
+    background-color: green;
+    border: 2px solid white;
+    color: white;
+    transition: 0.5s;
+    width: 80px;
+    cursor: pointer;
+}
+
+.game-controls button:hover {
+    background-color: white;
+    border: 2px solid green;
+    color: green;
 }
