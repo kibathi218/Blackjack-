@@ -9,5 +9,7 @@ const blackj = {
     phands,
     pcards,
     deck: [],
+    draw,
+
 
 }
