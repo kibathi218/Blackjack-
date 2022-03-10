@@ -1,14 +1,16 @@
 blackjack = {
     dhan: document.querySelector(".dealers-hand"),
     dcard: document.querySelector(".dealers-cards"),
-    phan: document.querySelector(".players-cards"),
-    pcard: document.querySelector(".dealers-cards"),
+    phan: document.querySelector(".players-hands"),
+    pcard: document.querySelector(".players-cards"),
     playBtn: document.querySelector(".play-btn"),
 
     standBtn: document.getElementById("stand-btn"),
     stood: false
 
 }
+
+gameIsLive = true;
 
 let deck = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
@@ -29,6 +31,7 @@ const deckValues = {
 }
 
 const hitBtn = document.getElementById("hit-btn");
+const dealBtn = document.getElementById("deal-btn");
 
 
 
@@ -46,17 +49,32 @@ function randomCard() {
 function displayCard(card) {
     let cardImg = document.createElement('img');
     cardImg.src = `/images/${card}.png`;
-    blackjack.phan.append(cardImg)
+    blackjack.pcard.append(cardImg)
 
 }
 
 function bjHit() {
 
+
+
     let card = randomCard();
     displayCard(card);
 
+
+
 }
 
+function startGame() {
+
+}
+
+function deal() {
+    bjHit();
+    bjHit();
+}
+
+
+dealBtn.addEventListener("click", deal)
 
 
 hitBtn.addEventListener("click", bjHit);

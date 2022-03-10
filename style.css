@@ -118,6 +118,10 @@ body {
     background-color: red;
 }
 
+#deal-btn {
+    background-color: rgb(0, 129, 50);
+}
+
 #reset-btn {
     background-color: rgb(202, 174, 13);
 }
