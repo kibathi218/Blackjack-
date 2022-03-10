@@ -4,9 +4,9 @@ body {
     padding: 0;
     align-items: center;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.container,
 .game-table {
     background-color: rgb(0, 131, 0);
     width: 100%;
@@ -14,25 +14,31 @@ body {
     text-align: center;
 }
 
-.title {
-    color: white;
-    padding-top: 130px;
-    font-size: 60px;
-    margin: 0;
+.container {
+    background-image: url(https://f.vividscreen.info/soft/345755c8657d20c6a7409c73936f0954/Play-blackjack-in-Casino-1280x1024.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 1200px;
+    text-align: center;
 }
 
-.title-img {
-    width: 250px;
+.title {
+    color: white;
+    padding-top: 180px;
+    font-size: 75px;
+    margin: 0;
 }
 
 .title-btn {
     width: 200px;
-}
-
-.title-img-div {
-    display: flex;
-    margin-top: 30px;
-    padding-left: 270px;
+    margin-top: 20px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: 3px solid white;
+    border-radius: 10%;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .row {
@@ -79,10 +85,10 @@ body {
 
 .game-controls button {
     background-color: green;
-    border: 2px solid white;
+    border: 4px solid white;
     color: white;
     transition: 0.5s;
-    width: 120px;
+    width: 150px;
     cursor: pointer;
     padding: 20px;
     font-size: 20px;
