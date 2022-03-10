@@ -121,3 +121,22 @@ body {
 #reset-btn {
     background-color: rgb(202, 174, 13);
 }
+
+.help-section {
+    background-image: url(https://media.istockphoto.com/vectors/poker-table-background-in-green-color-vector-id1218355494?k=20&m=1218355494&s=612x612&w=0&h=7izk2bQU_LDnKLLLbwAolAo4kwUmcwr_mo8_Vr7955w=);
+    height: 1000px;
+    width: 100%;
+    background-size: cover;
+    color: rgb(218, 170, 49);
+    padding-top: 40px;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.help-section ul {
+    list-style: none;
+}
+
+.help-section li {
+    padding-top: 10px;
+}

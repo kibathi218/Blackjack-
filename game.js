@@ -4,7 +4,7 @@ blackjack = {
     phan: document.querySelector(".playerss-hand"),
     pcard: document.querySelector(".dealers-cards"),
     playBtn: document.querySelector(".play-btn"),
-    hitBtn: document.getElementById("hit-btn"),
+
     standBtn: document.getElementById("stand-btn"),
 
     deck: ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"],
@@ -29,21 +29,15 @@ blackjack = {
 
 }
 
+const hitBtn = document.getElementById("hit-btn");
+
 
 
 function test() {
     console.log("testnjr med");
 }
 
-hitBtn.addEventListener("click", test);
-standBtn.addEventListener("click", test);
 
-function bjHit() {
-    if (blackjack[stood] === false) {
-        let card = randomCard();
-        displayCard(card);
-    }
-}
 
 function randomcard() {
     let idx = Math.floor(Math.random() * 12);
@@ -52,6 +46,20 @@ function randomcard() {
 
 function displayCard() {
     let cardImg = document.createElement('img');
-    cardImg.src = `${card}.png`;
+    cardImg.src = `/images/${card}.png`;
 
 }
+
+function bjHit() {
+
+    let card = randomCard();
+    displayCard(card);
+
+}
+
+
+
+
+
+hitBtn.addEventListener("click", bjHit);
+standBtn.addEventListener("click", test);
