@@ -6,11 +6,12 @@ blackjack = {
     playBtn: document.querySelector(".play-btn"),
 
 
-    stood: false
+
 
 }
 
 gameIsLive = true;
+let stood = false
 
 let deck = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
@@ -131,6 +132,8 @@ function checkWinner() {
         alert(`DEALER BUST You Win! Dealer Score:${dealerScore}`)
     } else if (dealerScore === 21 && playerScore < 21) {
         alert(`Dealer wins with ${dealerScore}`)
+    } else if (stood === true && dealerScore < 21) {
+        alert("YOU WINNNNN")
     }
 
 }
@@ -149,12 +152,15 @@ function deal() {
     dealerDraw();
     console.log(dealerScore)
 
-
 }
 
+
+
 function bjStand() {
+    stood = true;
     shouldDealerDraw();
     checkWinner();
+
 
 }
 
