@@ -8,8 +8,13 @@
 
 ![Image](https://upload.wikimedia.org/wikipedia/commons/3/33/Blackjack21.jpg)
 
+### Play Game Here!
+[Blackjack](https://blackjack-sk.surge.sh)
+
 ### Trello Board
 [Trello Board](https://trello.com/b/N8vp3geL/blackjack-game)
 
 #### Credits
 Images: [Google Images](https://www.google.com/search?q=blackjack&rlz=1C1CHBF_enUS948US948&sxsrf=APq-WBtEyeXz2mPyVRo159JSXh6DA6GyZw:1646659354214&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj9vv6OjLT2AhUnmeAKHYa1DPMQ_AUoAXoECAIQAw&biw=768&bih=387&dpr=2.5#imgrc=OK4hauJ1JaXfFM)
+
+Cards: [Wikipedia Card Library](https://en.wikipedia.org/wiki/Playing_card)

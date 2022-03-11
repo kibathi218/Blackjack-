@@ -10,7 +10,7 @@ blackjack = {
 
 }
 
-gameIsLive = true;
+gameIsLive = false;
 let stood = false
 
 let deck = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -92,12 +92,17 @@ function checkFirstCard(firstCard) {
 
 function bjHit() {
 
-    shouldDealerDraw();
-    let card = randomCard();
-    displayCard(card);
-    checkScore(card);
-    checkWinner();
-    console.log(dealerScore)
+    if (gameIsLive === true) {
+
+        shouldDealerDraw();
+        let card = randomCard();
+        displayCard(card);
+        checkScore(card);
+        checkWinner();
+        console.log(dealerScore)
+    } else {
+        alert("Please press deal to start")
+    }
 
 
 
@@ -139,12 +144,13 @@ function checkWinner() {
 }
 
 function shouldDealerDraw() {
-    if (dealerScore < 21 && dealerScore != 0) {
+    if (dealerScore < 18 && dealerScore != 0) {
         dealerDraw();
     }
 }
 
 function deal() {
+    gameIsLive = true;
     bjHit();
     bjHit();
     dealerHiddenCard();
@@ -157,9 +163,15 @@ function deal() {
 
 
 function bjStand() {
-    stood = true;
-    shouldDealerDraw();
-    checkWinner();
+    if (gameIsLive === true) {
+
+
+        stood = true;
+        shouldDealerDraw();
+        checkWinner();
+    } else {
+        alert("Please press deal to start")
+    }
 
 
 }
