@@ -8,16 +8,17 @@
 #### Description
 ##### Welcome to Blackjack. A classic card game where the player who ends with 21 or is the closest is the winner. 2 cards are dealt and you have to decide whether you would like another card or if you want to keep the cards you have. If your total exceeds 21, you automatically lose. The ace card is a special card because it can be used as 11 or as 1. Kings, queens and jacks are all worth 10. Have Fun!
 
+### Play Game Here!
+[Blackjack](https://blackjack-sk.surge.sh)
+
+
+
 #### Technologies Used
 * HTML
 * CSS
 * JavaScript
 
-### Play Game Here!
-[Blackjack](https://blackjack-sk.surge.sh)
-
-
-### Trello Board
+#### Trello Board
 [Trello Board](https://trello.com/b/N8vp3geL/blackjack-game)
 
 #### Credits
