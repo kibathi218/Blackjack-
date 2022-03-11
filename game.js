@@ -27,6 +27,8 @@ const deckValues = {
     K: 10
 }
 
+//////////////////VARIABLES//////////////////////////
+
 const hitBtn = document.getElementById("hit-btn");
 standBtn = document.getElementById("stand-btn")
 const dealBtn = document.getElementById("deal-btn");
@@ -34,10 +36,9 @@ let playerScoreDisplay = document.getElementById('playerScoreDisplay').innerText
 let playerScore = 0;
 let dealerScore = 0;
 
-function test() {
-    console.log("testnjr med");
-}
 
+
+//////////////////PLAYER FUNCTIONS////////////////////
 
 function randomCard() {
     let idx = Math.floor(Math.random() * 13);
@@ -51,15 +52,37 @@ function displayCard(card) {
     blackjack.pcard.append(cardImg)
 }
 
-function checkScore(card) {
-    if (card === "A" && playerScore <= 10) {
-        playerScore += deckValues.A[1];
-    } else if (card === "A" && playerScore > 10) {
-        playerScore += deckValues.A[0];
+function bjHit() {
+
+    if (gameIsLive === true) {
+
+        shouldDealerDraw();
+        let card = randomCard();
+        displayCard(card);
+        checkScore(card);
+        checkWinner();
+        console.log(dealerScore)
     } else {
-        playerScore += deckValues[cardName];
+        alert("Please press deal to start")
+    }
+
+}
+
+function bjStand() {
+    if (gameIsLive === true) {
+
+        shouldDealerDraw();
+        stood = true;
+
+        checkWinner();
+    } else {
+        alert("Please press deal to start")
     }
 }
+
+
+
+///////////////DEALER FUNTIONS/////////////////
 
 function checkDealerScore(dealerCard) {
     if (dealerCard === "A" && dealerScore <= 10) {
@@ -81,22 +104,6 @@ function checkFirstCard(firstCard) {
     }
 }
 
-function bjHit() {
-
-    if (gameIsLive === true) {
-
-        shouldDealerDraw();
-        let card = randomCard();
-        displayCard(card);
-        checkScore(card);
-        checkWinner();
-        console.log(dealerScore)
-    } else {
-        alert("Please press deal to start")
-    }
-
-}
-
 
 function dealerDraw() {
     let dealerCard = randomCard();
@@ -115,9 +122,21 @@ function dealerFirstCard() {
     checkFirstCard(firstCard);
 }
 
+//////////////////WIN CONDITIONS/////////////////////
+
+function checkScore(card) {
+    if (card === "A" && playerScore <= 10) {
+        playerScore += deckValues.A[1];
+    } else if (card === "A" && playerScore > 10) {
+        playerScore += deckValues.A[0];
+    } else {
+        playerScore += deckValues[cardName];
+    }
+}
+
 function checkWinner() {
     if (playerScore === 21) {
-        alert(`YOU WIN! Great Job! Dealer Score: ${dealerScore}`);
+        alert(`BLACKJACK! YOU WIN! Dealer Score: ${dealerScore}`);
     } else if (playerScore > 21) {
         alert(`BUST! Sorry you lose Your Score: ${playerScore}`);
     } else if (dealerScore > 21) {
@@ -147,18 +166,6 @@ function deal() {
     console.log(dealerScore)
 }
 
-function bjStand() {
-    if (gameIsLive === true) {
-
-        shouldDealerDraw();
-        stood = true;
-
-        checkWinner();
-    } else {
-        alert("Please press deal to start")
-    }
-}
-
 
 function dealerHiddenCard() {
     let hiddenCard = document.createElement('img');
@@ -166,10 +173,9 @@ function dealerHiddenCard() {
     blackjack.dcard.append(hiddenCard);
 }
 
-cardFlipSound = new Audio(`/sounds/card-flip.wav`)
 
+/////////////EVENT LISTENERS////////////////
 
 standBtn.addEventListener("click", bjStand)
 dealBtn.addEventListener("click", deal)
 hitBtn.addEventListener("click", bjHit);
-hitBtn.addEventListener("click", cardFlipSound);
