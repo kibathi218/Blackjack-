@@ -47,14 +47,6 @@ function test() {
 function randomCard() {
     let idx = Math.floor(Math.random() * 13);
     cardName = deck[idx];
-    console.log(cardName)
-    if (cardName === 'A') {
-        if (playerScore <= 10) {
-            return cardName[1]
-        } else {
-            return cardName[0];
-        }
-    }
     return cardName
 
 }
@@ -66,12 +58,43 @@ function displayCard(card) {
 
 }
 
+function checkScore(card) {
+    if (card === "A" && playerScore <= 10) {
+        playerScore += deckValues.A[1];
+    } else if (card === "A" && playerScore > 10) {
+        playerScore += deckValues.A[0];
+    } else {
+        playerScore += deckValues[cardName];
+    }
+}
+
+function checkDealerScore(dealerCard) {
+    if (dealerCard === "A" && dealerScore <= 10) {
+        dealerScore += deckValues.A[1];
+    } else if (dealerCard === "A" && playerScore > 10) {
+        dealerScore += deckValues.A[0];
+    } else {
+        dealerScore += deckValues[cardName];
+    }
+}
+
+function checkFirstCard(firstCard) {
+    if (firstCard === "A" && dealerScore <= 10) {
+        dealerScore += deckValues.A[1];
+    } else if (firstCard === "A" && playerScore > 10) {
+        dealerScore += deckValues.A[0];
+    } else {
+        dealerScore += deckValues[cardName];
+    }
+}
+
 function bjHit() {
 
     let card = randomCard();
     displayCard(card);
-    playerScore += deckValues[cardName];
-    console.log(playerScore)
+    checkScore(card);
+
+
 
 
 
@@ -81,7 +104,7 @@ function bjHit() {
 function dealerDraw() {
     let dealerCard = randomCard();
     displayDealerCard(dealerCard);
-    dealerScore += deckValues[cardName];
+    checkDealerScore(dealerCard)
 }
 
 function displayDealerCard(dealerCard) {
@@ -92,17 +115,22 @@ function displayDealerCard(dealerCard) {
 
 function dealerFirstCard() {
     let firstCard = randomCard();
-    dealerScore += deckValues[cardName];
+    checkFirstCard(firstCard);
+}
+
+function checkWinner() {
+    if (playerScore)
 }
 
 function deal() {
     bjHit();
     bjHit();
     dealerHiddenCard();
-    dealerDraw();
     dealerFirstCard();
     console.log(dealerScore)
-    console.log(playerScore)
+    dealerDraw();
+    console.log(dealerScore)
+
 
 }
 
