@@ -4,10 +4,6 @@ blackjack = {
     phan: document.querySelector(".players-hands"),
     pcard: document.querySelector(".players-cards"),
     playBtn: document.querySelector(".play-btn"),
-
-
-
-
 }
 
 gameIsLive = false;
@@ -38,26 +34,21 @@ let playerScoreDisplay = document.getElementById('playerScoreDisplay').innerText
 let playerScore = 0;
 let dealerScore = 0;
 
-
-
 function test() {
     console.log("testnjr med");
 }
-
 
 
 function randomCard() {
     let idx = Math.floor(Math.random() * 13);
     cardName = deck[idx];
     return cardName
-
 }
 
 function displayCard(card) {
     let cardImg = document.createElement('img');
     cardImg.src = `/images/${card}.png`;
     blackjack.pcard.append(cardImg)
-
 }
 
 function checkScore(card) {
@@ -104,10 +95,6 @@ function bjHit() {
         alert("Please press deal to start")
     }
 
-
-
-
-
 }
 
 
@@ -137,14 +124,15 @@ function checkWinner() {
         alert(`DEALER BUST You Win! Dealer Score: ${dealerScore}`)
     } else if (dealerScore === 21 && playerScore < 21) {
         alert(`Dealer wins with ${dealerScore}`)
-    } else if (stood === true && dealerScore < 21) {
+    } else if (stood === true && playerScore > dealerScore) {
         alert(`YOU WIN! Dealer Score: ${dealerScore}`)
+    } else if (stood === true && playerScore < dealerScore) {
+        alert(`YOU LOSE! Dealer Score: ${dealerScore}`)
     }
-
 }
 
 function shouldDealerDraw() {
-    if (dealerScore < 18 && dealerScore != 0) {
+    if (dealerScore < 17 && dealerScore != 0) {
         dealerDraw();
     }
 }
@@ -157,25 +145,19 @@ function deal() {
     dealerFirstCard();
     dealerDraw();
     console.log(dealerScore)
-
 }
-
-
 
 function bjStand() {
     if (gameIsLive === true) {
 
-
-        stood = true;
         shouldDealerDraw();
+        stood = true;
+
         checkWinner();
     } else {
         alert("Please press deal to start")
     }
-
-
 }
-
 
 
 function dealerHiddenCard() {
@@ -184,10 +166,10 @@ function dealerHiddenCard() {
     blackjack.dcard.append(hiddenCard);
 }
 
+cardFlipSound = new Audio(`/sounds/card-flip.wav`)
+
 
 standBtn.addEventListener("click", bjStand)
-
 dealBtn.addEventListener("click", deal)
-
-
 hitBtn.addEventListener("click", bjHit);
+hitBtn.addEventListener("click", cardFlipSound);
