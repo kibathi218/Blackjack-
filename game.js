@@ -52,7 +52,7 @@ function randomCard() {
         if (playerScore <= 10) {
             return cardName[1]
         } else {
-            return cardName[0]
+            return cardName[0];
         }
     }
     return cardName
