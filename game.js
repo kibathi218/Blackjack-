@@ -125,21 +125,21 @@ function dealerFirstCard() {
 
 function checkWinner() {
     if (playerScore === 21) {
-        alert(`YOU WIN! Great Job! Dealer Score:${dealerScore}`);
+        alert(`YOU WIN! Great Job! Dealer Score: ${dealerScore}`);
     } else if (playerScore > 21) {
-        alert(`BUST! Sorry you lose`);
+        alert(`BUST! Sorry you lose Your Score: ${playerScore}`);
     } else if (dealerScore > 21) {
-        alert(`DEALER BUST You Win! Dealer Score:${dealerScore}`)
+        alert(`DEALER BUST You Win! Dealer Score: ${dealerScore}`)
     } else if (dealerScore === 21 && playerScore < 21) {
         alert(`Dealer wins with ${dealerScore}`)
     } else if (stood === true && dealerScore < 21) {
-        alert("YOU WINNNNN")
+        alert(`YOU WIN! Dealer Score: ${dealerScore}`)
     }
 
 }
 
 function shouldDealerDraw() {
-    if (dealerScore < 17 && dealerScore != 0) {
+    if (dealerScore < 21 && dealerScore != 0) {
         dealerDraw();
     }
 }
