@@ -5,7 +5,7 @@ blackjack = {
     pcard: document.querySelector(".players-cards"),
     playBtn: document.querySelector(".play-btn"),
 
-    standBtn: document.getElementById("stand-btn"),
+
     stood: false
 
 }
@@ -31,6 +31,7 @@ const deckValues = {
 }
 
 const hitBtn = document.getElementById("hit-btn");
+standBtn = document.getElementById("stand-btn")
 const dealBtn = document.getElementById("deal-btn");
 let playerScoreDisplay = document.getElementById('playerScoreDisplay').innerText;
 let playerScore = 0;
@@ -90,9 +91,12 @@ function checkFirstCard(firstCard) {
 
 function bjHit() {
 
+    shouldDealerDraw();
     let card = randomCard();
     displayCard(card);
     checkScore(card);
+    checkWinner();
+    console.log(dealerScore)
 
 
 
@@ -119,7 +123,22 @@ function dealerFirstCard() {
 }
 
 function checkWinner() {
-    if (playerScore)
+    if (playerScore === 21) {
+        alert(`YOU WIN! Great Job! Dealer Score:${dealerScore}`);
+    } else if (playerScore > 21) {
+        alert(`BUST! Sorry you lose`);
+    } else if (dealerScore > 21) {
+        alert(`DEALER BUST You Win! Dealer Score:${dealerScore}`)
+    } else if (dealerScore === 21 && playerScore < 21) {
+        alert(`Dealer wins with ${dealerScore}`)
+    }
+
+}
+
+function shouldDealerDraw() {
+    if (dealerScore < 17 && dealerScore != 0) {
+        dealerDraw();
+    }
 }
 
 function deal() {
@@ -127,12 +146,19 @@ function deal() {
     bjHit();
     dealerHiddenCard();
     dealerFirstCard();
-    console.log(dealerScore)
     dealerDraw();
     console.log(dealerScore)
 
 
 }
+
+function bjStand() {
+    shouldDealerDraw();
+    checkWinner();
+
+}
+
+
 
 function dealerHiddenCard() {
     let hiddenCard = document.createElement('img');
@@ -141,7 +167,7 @@ function dealerHiddenCard() {
 }
 
 
-
+standBtn.addEventListener("click", bjStand)
 
 dealBtn.addEventListener("click", deal)
 
