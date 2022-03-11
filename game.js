@@ -32,6 +32,9 @@ const deckValues = {
 
 const hitBtn = document.getElementById("hit-btn");
 const dealBtn = document.getElementById("deal-btn");
+let playerScoreDisplay = document.getElementById('playerScoreDisplay').innerText;
+let playerScore = 0;
+let dealerScore = 0;
 
 
 
@@ -42,8 +45,18 @@ function test() {
 
 
 function randomCard() {
-    let idx = Math.floor(Math.random() * 12);
-    return deck[idx];
+    let idx = Math.floor(Math.random() * 13);
+    cardName = deck[idx];
+    console.log(cardName)
+    if (cardName === 'A') {
+        if (playerScore <= 10) {
+            return cardName[1]
+        } else {
+            return cardName[0]
+        }
+    }
+    return cardName
+
 }
 
 function displayCard(card) {
@@ -55,23 +68,51 @@ function displayCard(card) {
 
 function bjHit() {
 
-
-
     let card = randomCard();
     displayCard(card);
+    playerScore += deckValues[cardName];
+    console.log(playerScore)
 
 
 
 }
 
-function startGame() {
 
+function dealerDraw() {
+    let dealerCard = randomCard();
+    displayDealerCard(dealerCard);
+    dealerScore += deckValues[cardName];
+}
+
+function displayDealerCard(dealerCard) {
+    let dealerCardImg = document.createElement('img');
+    dealerCardImg.src = `/images/${dealerCard}.png`
+    blackjack.dcard.append(dealerCardImg);
+}
+
+function dealerFirstCard() {
+    let firstCard = randomCard();
+    dealerScore += deckValues[cardName];
 }
 
 function deal() {
     bjHit();
     bjHit();
+    dealerHiddenCard();
+    dealerDraw();
+    dealerFirstCard();
+    console.log(dealerScore)
+    console.log(playerScore)
+
 }
+
+function dealerHiddenCard() {
+    let hiddenCard = document.createElement('img');
+    hiddenCard.src = `/images/hiddencard.jpg`
+    blackjack.dcard.append(hiddenCard);
+}
+
+
 
 
 dealBtn.addEventListener("click", deal)
